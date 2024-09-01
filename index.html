@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #clickMe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+        #fullScreen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('gmm.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #fullScreen audio {
+            display: none; /* Hide audio controls */
+        }
+    </style>
+</head>
+<body>
+    <img src="click.png" id="clickMe" alt="Click Me">
+    <div id="fullScreen">
+        <audio id="morningAudio" autoplay>
+            <source src="gm.m4a" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <script>
+        document.getElementById('clickMe').addEventListener('click', function() {
+            document.body.style.opacity = 0;
+            setTimeout(function() {
+                document.getElementById('clickMe').style.display = 'none';
+                document.getElementById('fullScreen').style.display = 'flex';
+                document.body.style.opacity = 1;
+            }, 500); // Allow time for fade-out effect
+        });
+    </script>
+</body>
+</html>
